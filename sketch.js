@@ -3,7 +3,6 @@ var x, y, z;
 var rotationAngle = 0.0;
 
 function setup() {
-  //font = loadFont('assets/SourceSansPro-Regular.otf');
   createCanvas(windowWidth, windowHeight, WEBGL);
   background(255);
   r = 255;
@@ -14,41 +13,30 @@ function setup() {
   y = 0;
   z = 0;
   frameRate(30);
-  
-  //textFont(font);
-  //textSize(20);
-  //textAlign(RIGHT);
 }
 
 function draw() {
   lights();
   
-  //if (mouseIsPressed == true) {
-  //  x = (-width/2) + pmouseX;
-  //  y = (-height/2) + pmouseY;
-  //}
-  
-  //translate(x, y, z);
-  
-  //rotateX(rotationAngle);
-  //rotateY(rotationAngle);
-  //rotateZ(rotationAngle);
-  //rotationAngle = rotationAngle + 0.02;
-  fill(r, g, b);
-  
-  //fill(50);
-  //text(accelerationX, -100, -100);
-  
-  if (accelerationX != 0)
-  {
-    print('x = ' + accelerationX);
-    print('y = ' + accelerationY);
-    print('z = ' + accelerationZ);
+  if (mouseIsPressed == true) {
+    x = (-width/2) + pmouseX;
+    y = (-height/2) + pmouseY;
   }
   
-  translate(x + (10*accelerationX), y + (10*accelerationY), z + (10*accelerationZ));
-  rotateX(accelerationX * 0.02);
-  rotateY(accelerationY * 0.02);
+  translate(x, y, z);
+  
+  rotateX(rotationAngle);
+  rotateY(rotationAngle);
+  rotateZ(rotationAngle);
+  rotationAngle = rotationAngle + 0.02;
+  fill(r, g, b);
+  
+  if (accelerationX - pAccelerationX > 2) 
+  {
+    translate(x + (5*accelerationX), y + (5*accelerationY), z + (5*accelerationZ));
+    //rotateX(accelerationX * 0.02);
+    //rotateY(accelerationY * 0.02);
+  }
   
   box(100, 100, 100);
   
