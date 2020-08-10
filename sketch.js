@@ -29,6 +29,9 @@ function draw() {
   rotateZ(rotationAngle);
   rotationAngle = rotationAngle + 0.02;
   fill(r, g, b);
+
+  translate(100*accelerationX, 100*accelerationY, 100*accelerationZ)
+
   box(100);
   
   x = x + random(-0.2, 0.2);
@@ -42,6 +45,4 @@ function draw() {
   }
   
   i++;
-  
-  translate(100*accelerationX, 100*accelerationY, 100*accelerationZ)
 }
