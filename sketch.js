@@ -25,15 +25,15 @@ function draw() {
   
   translate(x, y, z);
   
-  //rotateX(rotationAngle);
-  //rotateY(rotationAngle);
-  //rotateZ(rotationAngle);
-  //rotationAngle = rotationAngle + 0.02;
+  rotateX(rotationAngle);
+  rotateY(rotationAngle);
+  rotateZ(rotationAngle);
+  rotationAngle = rotationAngle + 0.02;
   fill(r, g, b);
   
-  //translate(100*accelerationX, 100*accelerationY, 100*accelerationZ);
-  rotateX(accelerationX * 0.02);
-  rotateY(accelerationY * 0.02);
+  translate(100*accelerationX, 100*accelerationY, 100*accelerationZ);
+  //rotateX(accelerationX * 0.02);
+  //rotateY(accelerationY * 0.02);
   
   box(100, 100, 100);
   
