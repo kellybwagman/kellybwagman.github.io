@@ -23,8 +23,14 @@ function setup() {
 
 function draw() {
   //background(255);
-  lights();
-  normalMaterial();
+  //lights();
+  //ambientMaterial(250);
+  
+  let locX = mouseX - height / 2;
+  let locY = mouseY - width / 2;
+  ambientLight(100);
+  pointLight(255, 255, 255, locX, locY, 100);
+  fill(r, g, b)
   
   if (mouseIsPressed == true) {
     x = (-width/2) + pmouseX;
@@ -36,7 +42,7 @@ function draw() {
   rotateX(rotationAngle);
   rotateY(rotationAngle);
   rotateZ(rotationAngle);
-  rotationAngle = rotationAngle + 0.2; // 0.02;
+  rotationAngle = rotationAngle + 0.3;
   //fill(r, g, b);
   
   if (i % 2 == 0) {
@@ -123,6 +129,7 @@ function draw() {
    }
   
   torus(radius, tubeRadius, 20, 28);
+  //box(tubeRadius);
   
   //beginShape();
   //vertex(100, 23, -100);
@@ -135,9 +142,9 @@ function draw() {
   //z = z + random(-0.2, 0.2);
   
   if (i % 40 == 0) {
-    r = int(random(255));
-    g = int(random(255));
-    b = int(random(255));
+    r = int(random(170, 255));
+    g = int(random(170, 255));
+    b = int(random(170, 255));
   }
   
   i++;
