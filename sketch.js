@@ -16,8 +16,8 @@ function setup() {
   angleMode(DEGREES);
   detailX = 3;
   detailY = 3;
-  radius = 30;
-  tubeRadius = radius/3;
+  radius = 30 * 2;
+  tubeRadius = (radius/3) * 2;
   inhale = true;
 }
 
@@ -129,7 +129,6 @@ function draw() {
    }
   
   torus(radius, tubeRadius, 20, 28);
-  //box(tubeRadius);
   
   //beginShape();
   //vertex(100, 23, -100);
