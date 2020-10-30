@@ -13,10 +13,18 @@ function setup() {
   y = 0;
   z = 0;
   frameRate(30);
+  angleMode(DEGREES);
+  detailX = 3;
+  detailY = 3;
+  radius = 30;
+  tubeRadius = radius/3;
+  inhale = true;
 }
 
 function draw() {
+  //background(255);
   lights();
+  normalMaterial();
   
   if (mouseIsPressed == true) {
     x = (-width/2) + pmouseX;
@@ -28,17 +36,99 @@ function draw() {
   rotateX(rotationAngle);
   rotateY(rotationAngle);
   rotateZ(rotationAngle);
-  rotationAngle = rotationAngle + 0.02;
-  fill(r, g, b);
+  rotationAngle = rotationAngle + 0.2; // 0.02;
+  //fill(r, g, b);
   
-  if (accelerationX - pAccelerationX > 2) 
+  if (i % 2 == 0) {
+    if (accelerationX - pAccelerationX > 1.5)
+    {
+      x = x + (0.5*accelerationX);
+      //y = y + (1*accelerationY);
+      //z = z + (10*accelerationZ);
+      translate(x, y, z);    
+    }  
+  }
+  /*
+  if (rotationZ - pRotationZ > 5)
   {
-    translate(x + (5*accelerationX), y + (5*accelerationY), z + (5*accelerationZ));
-    //rotateX(accelerationX * 0.02);
-    //rotateY(accelerationY * 0.02);
+    rotateZ(degrees(rotationZ));
   }
   
-  box(100, 100, 100);
+  if (rotationX - pRotationX > 5)
+  {
+    rotateX(degrees(rotationX));
+  }
+  
+  if (rotationY - pRotationY > 5)
+  {
+    rotateY(degrees(rotationY));
+  }
+  */
+  if (i % 40 == 0) {
+    detailXChange = random([-1, 1]);
+    detailYChange = random([-1, 1]);
+
+    detailX = detailX + detailXChange;
+    if (detailX > 24)
+    {
+      detailX = 24;
+    }
+
+    if (detailX < 3)
+    {
+      detailX = 3;
+    }
+
+    detailY = detailY + detailYChange;
+    if (detailY > 16)
+    {
+      detailY = 16;
+    }
+
+    if (detailY < 3)
+    {
+      detailY = 3;
+    }
+  }
+  
+  /*if (i % 15 == 0) {
+    radiusChange = random(-1, 1);
+    tubeRadiusChange = random(-3, 3);
+    
+    radius = radius + radiusChange;
+    tubeRadius = tubeRadius + tubeRadiusChange;
+    
+    if (tubeRadius < 3)
+    {
+      tubeRadius = 3;
+    }
+  }*/
+    
+  if (inhale && tubeRadius < radius)
+  {
+    tubeRadius = tubeRadius + 0.25;
+  }
+  else
+  {
+    inhale = false;
+  }
+  
+  if (inhale == false && tubeRadius > 3)
+  {
+    tubeRadius = tubeRadius - 0.25;
+  }
+  else
+  {
+    inhale = true;
+   }
+  
+  torus(radius, tubeRadius, 20, 28);
+  
+  //beginShape();
+  //vertex(100, 23, -100);
+  //vertex(200,23,-50);
+  //vertex(150, 45,-100);
+  //endShape();
   
   //x = x + random(-0.2, 0.2);
   //y = y + random(-0.2, 0.2);
